@@ -2,24 +2,16 @@ package com.hibernate.config;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.reflections.Reflections;
-import org.reflections.scanners.ResourcesScanner;
-import org.reflections.scanners.SubTypesScanner;
-import org.reflections.util.ClasspathHelper;
-import org.reflections.util.ConfigurationBuilder;
-import org.reflections.util.FilterBuilder;
+import org.slf4j.Logger;
 
 public class HibernateConfiguration {
 
@@ -65,7 +57,7 @@ public class HibernateConfiguration {
 
 	}
 
-	public static Session getSession() throws HibernateException {
+	public static Session getSession() {
 		return sessionFactory.openSession();
 	}
 }
