@@ -12,7 +12,11 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.reflections.Reflections;
 import org.slf4j.Logger;
-
+/**
+ * 
+ * @author ramakanth.b
+ *Desc: Configuration file 
+ */
 public class HibernateConfiguration {
 
 	private static final Logger LOG = org.slf4j.LoggerFactory.getLogger(HibernateConfiguration.class);
