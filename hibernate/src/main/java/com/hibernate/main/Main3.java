@@ -2,31 +2,28 @@ package com.hibernate.main;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.slf4j.Logger;
 
 import com.hibernate.config.HibernateConfiguration;
 import com.hibernate.persistence.Person;
 import com.hibernate.utils.PersonUtils;
+
 /**
  * 
- * @author ramakanth.b
- *Desc: Saving Java object in database
+ * @author ramakanth.b Changing the value even after saving the session but
+ *         before committing the transaction
  */
-public class Main1 {
+public class Main3 {
 
-	private static final Logger LOG = org.slf4j.LoggerFactory.getLogger(Main1.class);
-	
 	public static void main(String[] args) {
 		Session session = HibernateConfiguration.getSession();
-		Transaction transaction = session.beginTransaction();
+		Transaction transcation = session.beginTransaction();
 		Person p = PersonUtils.getPerson();
+		p.setId("007");
 		session.save(p);
-		transaction.commit();
+		p.setAge(24);
+		transcation.commit();
 		session.close();
-		LOG.info("Person Object saved to database");
 
 	}
-
-
 
 }

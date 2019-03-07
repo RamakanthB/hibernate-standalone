@@ -1,8 +1,9 @@
 package com.hibernate.main;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.slf4j.Logger;
 
 import com.hibernate.config.HibernateConfiguration;
 import com.hibernate.persistence.Person;
@@ -10,20 +11,17 @@ import com.hibernate.utils.PersonUtils;
 /**
  * 
  * @author ramakanth.b
- *Desc: Saving Java object in database
+ * Desc: Storing multiple objects in database
  */
-public class Main1 {
+public class Main2 {
 
-	private static final Logger LOG = org.slf4j.LoggerFactory.getLogger(Main1.class);
-	
 	public static void main(String[] args) {
 		Session session = HibernateConfiguration.getSession();
-		Transaction transaction = session.beginTransaction();
-		Person p = PersonUtils.getPerson();
-		session.save(p);
-		transaction.commit();
+		Transaction transcation = session.beginTransaction();
+		List<Person> personList = PersonUtils.getPersonList();
+		personList.stream().forEach(session::save);
+		transcation.commit();
 		session.close();
-		LOG.info("Person Object saved to database");
 
 	}
 
